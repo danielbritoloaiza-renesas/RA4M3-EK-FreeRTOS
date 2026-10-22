@@ -1,0 +1,54 @@
+# FreeRTOS on Renesas RA4M3
+
+This repository documents my learning journey with FreeRTOS using
+the Renesas RA4M3 and Flexible Software Package (FSP).
+
+## Development Environment
+
+- MCU: Renesas RA4M3
+- RTOS: FreeRTOS
+- Framework: Renesas Flexible Software Package (FSP)
+- IDE: e² studio
+- Debugger: J-Link
+
+## Objective
+
+The goal of this project is to learn FreeRTOS from the fundamentals
+through advanced concepts and later integrate embedded connectivity.
+
+Each major concept is developed in a separate Git branch.
+
+## Learning Roadmap
+
+1. FreeRTOS task fundamentals
+2. Task scheduling
+3. Priorities and preemption
+4. Queues
+5. Semaphores
+6. Mutexes
+7. Task notifications
+8. Event groups
+9. Software timers
+10. Memory management
+11. Interrupt synchronization
+12. Debugging and performance
+13. Embedded connectivity
+
+## Reference Project
+
+The master branch contains the original working FSP FreeRTOS Blinky
+example and is kept as a known-good reference.
+
+## Branch Strategy
+
+Each branch introduces one FreeRTOS or embedded connectivity concept.
+
+Examples:
+
+- `01_task_anatomy`
+- `02_freertos_two_tasks`
+- `03_task_states`
+- `04_task_delay`
+- `05_periodic_tasks`
+
+Each branch builds on the knowledge developed in the previous branch.
