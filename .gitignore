@@ -15,6 +15,7 @@
 *.bin
 *.d
 *.su
+.cproject
 
 # Logs
 *.log
