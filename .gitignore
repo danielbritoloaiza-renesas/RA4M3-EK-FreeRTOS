@@ -1,2 +1,26 @@
 /Debug/
 /JLinkLog.log
+
+# Build output
+/Debug/
+/Release/
+/build/
+
+# Compiled files
+*.o
+*.obj
+*.elf
+*.map
+*.hex
+*.bin
+*.d
+*.su
+.cproject
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*~
