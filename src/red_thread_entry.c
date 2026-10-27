@@ -43,14 +43,9 @@ void red_thread_entry (void * pvParameters)
 #if BSP_NUMBER_OF_CORES == 1
 
         /* Update all board LEDs */
-        for (uint32_t i = 0; i < leds.led_count; i++)
-        {
-            /* Get pin to toggle */
-            uint32_t pin = leds.p_leds[i];
 
-            /* Write to this pin */
-            R_BSP_PinWrite((bsp_io_port_pin_t) pin, pin_level);
-        }
+        /* Write to this pin */
+        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2], pin_level);
 #else
 
         /* Update LED that is at the index of this core. */
@@ -70,6 +65,6 @@ void red_thread_entry (void * pvParameters)
             pin_level = BSP_IO_LEVEL_LOW;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(100));
+        vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
