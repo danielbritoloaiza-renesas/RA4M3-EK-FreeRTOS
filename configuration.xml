@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<raConfiguration version="3">
+<raConfiguration version="12">
   <generalSettings>
-    <option key="#pinconfiguration#" value="R7FA4M3AF3CFB.pincfg"/>
     <option key="#Board#" value="board.ra4m3ek"/>
     <option key="CPU" value="RA4M3"/>
     <option key="Core" value="CM33"/>
@@ -9,6 +8,7 @@
     <option key="#TargetARCHITECTURE#" value="cortex-m33"/>
     <option key="#DeviceCommand#" value="R7FA4M3AF"/>
     <option key="#RTOS#" value="rtos.awsfreertos"/>
+    <option key="#pinconfiguration#" value="R7FA4M3AF3CFB.pincfg"/>
     <option key="#FSPVersion#" value="6.6.0"/>
     <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##ra4m3_ek##"/>
     <option key="#SELECTED_TOOLCHAIN#" value="clang_arm"/>
@@ -85,11 +85,11 @@
       <property id="config.bsp.option_setting.banksel" value="config.bsp.option_setting.banksel.disabled"/>
       <property id="config.bsp.option_setting.banksel.blockswap" value="config.bsp.option_setting.banksel.blockswap.disabled"/>
       <property id="config.bsp.option_setting.bps" value="config.bsp.option_setting.bps.disabled"/>
-      <property id="config.bsp.option_setting.bps.0" value="0U"/>
-      <property id="config.bsp.option_setting.bps.1" value="0U"/>
+      <property id="config.bsp.option_setting.bps.0" value=""/>
+      <property id="config.bsp.option_setting.bps.1" value=""/>
       <property id="config.bsp.option_setting.pbps" value="config.bsp.option_setting.pbps.disabled"/>
-      <property id="config.bsp.option_setting.pbps.0" value="0U"/>
-      <property id="config.bsp.option_setting.pbps.1" value="0U"/>
+      <property id="config.bsp.option_setting.pbps.0" value=""/>
+      <property id="config.bsp.option_setting.pbps.1" value=""/>
       <property id="config.bsp.option_setting.ofs1_sec" value="config.bsp.option_setting.ofs1_sec.enabled"/>
       <property id="config.bsp.option_setting.ofs1_sec.voltage_detection0.start" value="config.bsp.option_setting.ofs1_sec.voltage_detection0.start.disabled"/>
       <property id="config.bsp.option_setting.ofs1_sec.voltage_detection0_level" value="config.bsp.option_setting.ofs1_sec.voltage_detection0_level.280"/>
@@ -97,19 +97,19 @@
       <property id="config.bsp.option_setting.banksel_sec" value="config.bsp.option_setting.banksel_sec.disabled"/>
       <property id="config.bsp.option_setting.banksel_sec.blockswap" value="config.bsp.option_setting.banksel_sec.blockswap.disabled"/>
       <property id="config.bsp.option_setting.bps_sec" value="config.bsp.option_setting.bps_sec.disabled"/>
-      <property id="config.bsp.option_setting.bps_sec.0" value="0U"/>
-      <property id="config.bsp.option_setting.bps_sec.1" value="0U"/>
+      <property id="config.bsp.option_setting.bps_sec.0" value=""/>
+      <property id="config.bsp.option_setting.bps_sec.1" value=""/>
       <property id="config.bsp.option_setting.pbps_sec" value="config.bsp.option_setting.pbps_sec.disabled"/>
-      <property id="config.bsp.option_setting.pbps_sec.0" value="0U"/>
-      <property id="config.bsp.option_setting.pbps_sec.1" value="0U"/>
+      <property id="config.bsp.option_setting.pbps_sec.0" value=""/>
+      <property id="config.bsp.option_setting.pbps_sec.1" value=""/>
       <property id="config.bsp.option_setting.ofs1_sel" value="config.bsp.option_setting.ofs1_sel.enabled"/>
       <property id="config.bsp.option_setting.ofs1_sel.voltage_detection0_level" value="config.bsp.option_setting.ofs1_sel.voltage_detection0_level.secure"/>
       <property id="config.bsp.option_setting.ofs1_sel.voltage_detection0.start" value="config.bsp.option_setting.ofs1_sel.voltage_detection0.start.secure"/>
       <property id="config.bsp.option_setting.banksel_sel" value="config.bsp.option_setting.banksel_sel.disabled"/>
       <property id="config.bsp.option_setting.banksel_sel.mode" value="config.bsp.option_setting.banksel_sel.mode.both"/>
       <property id="config.bsp.option_setting.bps_sel" value="config.bsp.option_setting.bps_sel.disabled"/>
-      <property id="config.bsp.option_setting.bps_sel.0" value="0U"/>
-      <property id="config.bsp.option_setting.bps_sel.1" value="0U"/>
+      <property id="config.bsp.option_setting.bps_sel.0" value=""/>
+      <property id="config.bsp.option_setting.bps_sel.1" value=""/>
     </config>
     <config id="config.bsp.ra">
       <property id="config.bsp.common.main" value="0x400"/>
@@ -168,10 +168,6 @@
       <description>Common source for all template projects.</description>
       <originalPack>Renesas.RA_common.6.6.0.pack</originalPack>
     </component>
-    <component apiversion="" class="Projects" condition="" group="all" subgroup="freertos_blinky" variant="" vendor="Renesas" version="6.6.0">
-      <description>Simple application that blinks an LED using FreeRTOS.</description>
-      <originalPack>Renesas.RA_freertos_blinky.6.6.0.pack</originalPack>
-    </component>
     <component apiversion="" class="Common" condition="" group="all" subgroup="fsp_common" variant="" vendor="Renesas" version="6.6.0">
       <description>Board Support Package Common Files</description>
       <originalPack>Renesas.RA.6.6.0.pack</originalPack>
@@ -217,11 +213,17 @@
       <originalPack>Renesas.RA_board_ra4m3_ek.6.6.0.pack</originalPack>
     </component>
   </raComponentSelection>
+  <raElcConfiguration/>
   <raIcuConfiguration/>
-  <raMessagingConfiguration/>
+  <raLinkMapConfiguration/>
   <raModuleConfiguration>
     <module id="module.driver.ioport_on_ioport.0">
       <property id="module.driver.ioport.name" value="g_ioport"/>
+      <property id="module.driver.ioport.elc_trigger_ioport1" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport2" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport3" value="_disabled"/>
+      <property id="module.driver.ioport.elc_trigger_ioport4" value="_disabled"/>
+      <property id="module.driver.ioport.pincfg" value="g_bsp_pin_cfg"/>
     </module>
     <module id="module.middleware.rm_freertos_port.0"/>
     <context id="_hal.0">
@@ -229,14 +231,85 @@
       <stack module="module.middleware.rm_freertos_port.0"/>
     </context>
     <context id="rtos.awsfreertos.thread.0">
-      <property id="_symbol" value="blinky_thread"/>
-      <property id="rtos.awsfreertos.thread.name" value="Blinky Thread"/>
+      <property id="_symbol" value="red_thread"/>
+      <property id="rtos.awsfreertos.thread.name" value="Red Thread"/>
       <property id="rtos.awsfreertos.thread.stack" value="512"/>
       <property id="rtos.awsfreertos.thread.priority" value="1"/>
+      <property id="rtos.awsfreertos.thread.context" value="NULL"/>
+      <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
+      <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
     </context>
+    <config id="config.driver.ioport">
+      <property id="config.driver.ioport.checking" value="config.driver.ioport.checking.system"/>
+      <property id="config.driver.ioport.ccd_support_enable" value="config.driver.ioport.ccd_support_enable.disabled"/>
+    </config>
     <config id="config.awsfreertos.thread">
+      <property id="config.awsfreertos.custom_freertosconfig" value=""/>
+      <property id="config.awsfreertos.thread.configuse_preemption" value="config.awsfreertos.thread.configuse_preemption.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_port_optimised_task_selection" value="config.awsfreertos.thread.configuse_port_optimised_task_selection.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_tickless_idle" value="config.awsfreertos.thread.configuse_tickless_idle.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_idle_hook" value="config.awsfreertos.thread.configuse_idle_hook.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_malloc_failed_hook" value="config.awsfreertos.thread.configuse_malloc_failed_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_daemon_task_startup_hook" value="config.awsfreertos.thread.configuse_daemon_task_startup_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_tick_hook" value="config.awsfreertos.thread.configuse_tick_hook.disabled"/>
+      <property id="config.awsfreertos.thread.configcpu_clock_hz" value="SystemCoreClock"/>
+      <property id="config.awsfreertos.thread.configtick_rate_hz" value="1000"/>
+      <property id="config.awsfreertos.thread.configmax_priorities" value="5"/>
+      <property id="config.awsfreertos.thread.configminimal_stack_size" value="128"/>
+      <property id="config.awsfreertos.thread.configmax_task_name_len" value="16"/>
+      <property id="config.awsfreertos.thread.configuse_trace_facility" value="config.awsfreertos.thread.configuse_trace_facility.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_stats_formatting_functions" value="config.awsfreertos.thread.configuse_stats_formatting_functions.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_16_bit_ticks" value="config.awsfreertos.thread.configuse_16_bit_ticks.disabled"/>
+      <property id="config.awsfreertos.thread.configidle_should_yield" value="config.awsfreertos.thread.configidle_should_yield.enabled"/>
+      <property id="config.awsfreertos.thread.configuse_task_notifications" value="config.awsfreertos.thread.configuse_task_notifications.enabled"/>
+      <property id="config.awsfreertos.thread.configtask_notifications_array_enteries" value="1"/>
+      <property id="config.awsfreertos.thread.configuse_mutexes" value="config.awsfreertos.thread.configuse_mutexes.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_recursive_mutexes" value="config.awsfreertos.thread.configuse_recursive_mutexes.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_counting_semaphores" value="config.awsfreertos.thread.configuse_counting_semaphores.enabled"/>
+      <property id="config.awsfreertos.thread.configcheck_for_stack_overflow" value="config.awsfreertos.thread.configcheck_for_stack_overflow.disabled"/>
+      <property id="config.awsfreertos.thread.configqueue_registry_size" value="10"/>
+      <property id="config.awsfreertos.thread.configuse_queue_sets" value="config.awsfreertos.thread.configuse_queue_sets.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_time_slicing" value="config.awsfreertos.thread.configuse_time_slicing.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_newlib_reentrant" value="config.awsfreertos.thread.configuse_newlib_reentrant.disabled"/>
+      <property id="config.awsfreertos.thread.configenable_backward_compatibility" value="config.awsfreertos.thread.configenable_backward_compatibility.disabled"/>
+      <property id="config.awsfreertos.thread.confignum_thread_local_storage_pointers" value="5"/>
+      <property id="config.awsfreertos.thread.configstack_depth_type" value="uint32_t"/>
+      <property id="config.awsfreertos.thread.configmessage_buffer_length_type" value="size_t"/>
+      <property id="config.awsfreertos.thread.configheap_clear_memory_on_free" value="config.awsfreertos.thread.configheap_clear_memory_on_free.disabled"/>
       <property id="config.awsfreertos.thread.configsupport_static_allocation" value="config.awsfreertos.thread.configsupport_static_allocation.enabled"/>
       <property id="config.awsfreertos.thread.configsupport_dynamic_allocation" value="config.awsfreertos.thread.configsupport_dynamic_allocation.disabled"/>
+      <property id="config.awsfreertos.thread.configtotal_heap_size" value="1024"/>
+      <property id="config.awsfreertos.thread.configapplication_allocated_heap" value="config.awsfreertos.thread.configapplication_allocated_heap.disabled"/>
+      <property id="config.awsfreertos.thread.configgenerate_run_time_stats" value="config.awsfreertos.thread.configgenerate_run_time_stats.disabled"/>
+      <property id="config.awsfreertos.thread.configuse_timers" value="config.awsfreertos.thread.configuse_timers.enabled"/>
+      <property id="config.awsfreertos.thread.configtimer_task_priority" value="3"/>
+      <property id="config.awsfreertos.thread.configtimer_queue_length" value="10"/>
+      <property id="config.awsfreertos.thread.configtimer_task_stack_depth" value="128"/>
+      <property id="config.awsfreertos.thread.configlibrary_max_syscall_interrupt_priority" value="board.icu.common.irq.priority1"/>
+      <property id="config.awsfreertos.thread.configassert" value="assert(x)"/>
+      <property id="config.awsfreertos.thread.configinclude_application_defined_privileged_functions" value="config.awsfreertos.thread.configinclude_application_defined_privileged_functions.disabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskpriorityset" value="config.awsfreertos.thread.include_vtaskpriorityset.enabled"/>
+      <property id="config.awsfreertos.thread.include_uxtaskpriorityget" value="config.awsfreertos.thread.include_uxtaskpriorityget.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelete" value="config.awsfreertos.thread.include_vtaskdelete.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtasksuspend" value="config.awsfreertos.thread.include_vtasksuspend.enabled"/>
+      <property id="config.awsfreertos.thread.include_xresumefromisr" value="config.awsfreertos.thread.include_xresumefromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelayuntil" value="config.awsfreertos.thread.include_vtaskdelayuntil.enabled"/>
+      <property id="config.awsfreertos.thread.include_vtaskdelay" value="config.awsfreertos.thread.include_vtaskdelay.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetschedulerstate" value="config.awsfreertos.thread.include_xtaskgetschedulerstate.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetcurrenttaskhandle" value="config.awsfreertos.thread.include_xtaskgetcurrenttaskhandle.enabled"/>
+      <property id="config.awsfreertos.thread.include_uxtaskgetstackhighwatermark" value="config.awsfreertos.thread.include_uxtaskgetstackhighwatermark.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgetidletaskhandle" value="config.awsfreertos.thread.include_xtaskgetidletaskhandle.disabled"/>
+      <property id="config.awsfreertos.thread.include_etaskgetstate" value="config.awsfreertos.thread.include_etaskgetstate.disabled"/>
+      <property id="config.awsfreertos.thread.include_xeventgroupsetbitfromisr" value="config.awsfreertos.thread.include_xeventgroupsetbitfromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_xtimerpendfunctioncall" value="config.awsfreertos.thread.include_xtimerpendfunctioncall.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskabortdelay" value="config.awsfreertos.thread.include_xtaskabortdelay.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskgethandle" value="config.awsfreertos.thread.include_xtaskgethandle.disabled"/>
+      <property id="config.awsfreertos.thread.include_xtaskresumefromisr" value="config.awsfreertos.thread.include_xtaskresumefromisr.enabled"/>
+      <property id="config.awsfreertos.thread.include_hw_stack_monitor" value="config.awsfreertos.thread.include_hw_stack_monitor.disabled"/>
+      <property id="config.awsfreertos.thread.print_function" value="vLoggingPrint(x)"/>
+      <property id="config.awsfreertos.thread.include_time_and_task" value="config.awsfreertos.thread.include_time_and_task.disabled"/>
+      <property id="config.awsfreertos.thread.debug_logging_name" value="Log Name"/>
+      <property id="config.awsfreertos.thread.logging_level" value="config.awsfreertos.thread.logging_level.log_none"/>
     </config>
   </raModuleConfiguration>
   <raPinConfiguration>
@@ -470,20 +543,20 @@
       <configSetting altId="usbfs0.vbus.p407" configurationId="usbfs0.vbus"/>
       <configSetting altId="usbfs0.vbusen.p500" configurationId="usbfs0.vbusen"/>
     </pincfg>
-    <pincfg active="false" name="R7FA4M3AF3CFB.pincfg" symbol="">
+    <pincfg active="false" name="R7FA4M3AF3CFB.pincfg" selected="false" symbol="">
       <configSetting altId="debug0.mode.jtag" configurationId="debug0.mode"/>
-      <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
-      <configSetting altId="p108.debug0.tms" configurationId="p108"/>
-      <configSetting altId="debug0.tms.p108" configurationId="debug0.tms"/>
-      <configSetting altId="p109.gpio_mode.gpio_mode_peripheral" configurationId="p109.gpio_mode"/>
-      <configSetting altId="p109.debug0.tdo" configurationId="p109"/>
-      <configSetting altId="debug0.tdo.p109" configurationId="debug0.tdo"/>
-      <configSetting altId="p110.gpio_mode.gpio_mode_peripheral" configurationId="p110.gpio_mode"/>
-      <configSetting altId="p110.debug0.tdi" configurationId="p110"/>
-      <configSetting altId="debug0.tdi.p110" configurationId="debug0.tdi"/>
-      <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
-      <configSetting altId="p300.debug0.tck" configurationId="p300"/>
       <configSetting altId="debug0.tck.p300" configurationId="debug0.tck"/>
+      <configSetting altId="debug0.tdi.p110" configurationId="debug0.tdi"/>
+      <configSetting altId="debug0.tdo.p109" configurationId="debug0.tdo"/>
+      <configSetting altId="debug0.tms.p108" configurationId="debug0.tms"/>
+      <configSetting altId="p108.debug0.tms" configurationId="p108"/>
+      <configSetting altId="p108.gpio_mode.gpio_mode_peripheral" configurationId="p108.gpio_mode"/>
+      <configSetting altId="p109.debug0.tdo" configurationId="p109"/>
+      <configSetting altId="p109.gpio_mode.gpio_mode_peripheral" configurationId="p109.gpio_mode"/>
+      <configSetting altId="p110.debug0.tdi" configurationId="p110"/>
+      <configSetting altId="p110.gpio_mode.gpio_mode_peripheral" configurationId="p110.gpio_mode"/>
+      <configSetting altId="p300.debug0.tck" configurationId="p300"/>
+      <configSetting altId="p300.gpio_mode.gpio_mode_peripheral" configurationId="p300.gpio_mode"/>
     </pincfg>
   </raPinConfiguration>
 </raConfiguration>

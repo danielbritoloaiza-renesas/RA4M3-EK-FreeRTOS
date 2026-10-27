@@ -4,12 +4,12 @@
 * SPDX-License-Identifier: BSD-3-Clause
 */
 
-#include "blinky_thread.h"
+#include <red_thread.h>
 
 extern bsp_leds_t g_bsp_leds;
 
-/* Blinky Thread entry function */
-void blinky_thread_entry (void * pvParameters)
+/* Red Thread entry function */
+void red_thread_entry (void * pvParameters)
 {
     FSP_PARAMETER_NOT_USED(pvParameters);
 
