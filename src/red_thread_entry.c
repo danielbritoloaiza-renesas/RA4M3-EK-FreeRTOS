@@ -5,7 +5,6 @@
 */
 
 #include <red_thread.h>
-extern TaskHandle_t blue_thread0;
 
 extern bsp_leds_t g_bsp_leds;
 
@@ -13,7 +12,6 @@ extern bsp_leds_t g_bsp_leds;
 void red_thread_entry (void * pvParameters)
 {
     FSP_PARAMETER_NOT_USED(pvParameters);
-    uint32_t i = 0;
 
     /* LED type structure */
     bsp_leds_t leds = g_bsp_leds;
@@ -66,11 +64,7 @@ void red_thread_entry (void * pvParameters)
         {
             pin_level = BSP_IO_LEVEL_LOW;
         }
-        if(++i>9)
-        {
-            vTaskResume(blue_thread0);
-            i=0;
-        }
+
         vTaskDelay(pdMS_TO_TICKS(200));
     }
 }

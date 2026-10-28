@@ -60,7 +60,6 @@ void blue_thread0_entry(void *pvParameters)
         {
             pin_level = BSP_IO_LEVEL_LOW;
         }
-        vTaskSuspend(blue_thread0);  
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
