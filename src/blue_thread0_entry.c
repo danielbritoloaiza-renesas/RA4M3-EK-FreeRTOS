@@ -1,13 +1,14 @@
 #include "blue_thread0.h"
 
 extern bsp_leds_t g_bsp_leds;
-extern TaskHandle_t blue_thread0;
 
 /* Blue Thread entry function */
 /* pvParameters contains TaskHandle_t */
 void blue_thread0_entry(void *pvParameters)
 {
  FSP_PARAMETER_NOT_USED(pvParameters);
+    TickType_t xLastWakeTime = xTaskGetTickCount();
+
     /* LED type structure */
     bsp_leds_t leds = g_bsp_leds;
 
@@ -60,6 +61,7 @@ void blue_thread0_entry(void *pvParameters)
         {
             pin_level = BSP_IO_LEVEL_LOW;
         }
-        vTaskDelay(pdMS_TO_TICKS(100));
+
+        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(100));
     }
 }

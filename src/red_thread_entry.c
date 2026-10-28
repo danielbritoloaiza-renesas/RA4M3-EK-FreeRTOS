@@ -12,6 +12,7 @@ extern bsp_leds_t g_bsp_leds;
 void red_thread_entry (void * pvParameters)
 {
     FSP_PARAMETER_NOT_USED(pvParameters);
+    TickType_t xLastWakeTime = xTaskGetTickCount();
 
     /* LED type structure */
     bsp_leds_t leds = g_bsp_leds;
@@ -65,6 +66,6 @@ void red_thread_entry (void * pvParameters)
             pin_level = BSP_IO_LEVEL_LOW;
         }
 
-        vTaskDelay(pdMS_TO_TICKS(200));
+        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
     }
 }
