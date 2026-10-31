@@ -496,6 +496,12 @@
       <configSetting altId="p500.gpio_mode.gpio_mode_peripheral" configurationId="p500.gpio_mode"/>
       <configSetting altId="p501.usbfs0.ovrcura" configurationId="p501"/>
       <configSetting altId="p501.gpio_mode.gpio_mode_peripheral" configurationId="p501.gpio_mode"/>
+      <configSetting altId="p502.output.low" configurationId="p502"/>
+      <configSetting altId="p502.gpio_mode.gpio_mode_out.low" configurationId="p502.gpio_mode"/>
+      <configSetting altId="p503.output.low" configurationId="p503"/>
+      <configSetting altId="p503.gpio_mode.gpio_mode_out.low" configurationId="p503.gpio_mode"/>
+      <configSetting altId="p504.output.low" configurationId="p504"/>
+      <configSetting altId="p504.gpio_mode.gpio_mode_out.low" configurationId="p504.gpio_mode"/>
       <configSetting altId="p505.asel" configurationId="p505"/>
       <configSetting altId="p505.gpio_mode.gpio_mode_an" configurationId="p505.gpio_mode"/>
       <configSetting altId="p506.asel" configurationId="p506"/>
