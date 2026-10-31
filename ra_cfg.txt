@@ -522,3 +522,12 @@ FSP Configuration
     Memory Allocation: Static
     Allocate Secure Context: Enable
     
+  Thread "RTC Thread"
+    Symbol: RTC_thread
+    Name: RTC Thread
+    Stack size (bytes): 1024
+    Priority: 1
+    Thread Context: NULL
+    Memory Allocation: Static
+    Allocate Secure Context: Enable
+    
