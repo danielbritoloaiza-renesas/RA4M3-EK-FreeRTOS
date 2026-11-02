@@ -66,6 +66,6 @@ void red_thread_entry (void * pvParameters)
             pin_level = BSP_IO_LEVEL_LOW;
         }
 
-        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(200));
+        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(400));
     }
 }

@@ -199,9 +199,9 @@ FSP Configuration
       P415 28 GPIO LED1 Low None "Output mode (Initial Low)" CMOS - "AGT4: AGTIO4; CTSU0: TS11; GPT0: GTIOC0A; ICU0: IRQ08; SDHI0: SD0CD; USB_FS0: USB_VBUSEN" - IO - - 
       P500 113 USB_FS0_USB_VBUSEN USB_VBUS_EN Low - "Peripheral mode" CMOS None "ADC1: AN116; AGT0: AGTOA0; CAC0: CACREF; GPT_OPS0: GTIU; QSPI0: QSPCLK; USB_FS0: USB_VBUSEN" - IO - - 
       P501 114 USB_FS0_USB_OVRCURA USB_VBUS_OC Low None "Peripheral mode" CMOS None "ADC1: AN117; AGT0: AGTOB0; GPT_OPS0: GTIV; ICU0: IRQ11; QSPI0: QSSL; USB_FS0: USB_OVRCURA" - IO - - 
-      P502 115 - - - - Disabled - - "ADC1: AN118; AGT2: AGTOA2; GPT_OPS0: GTIW; ICU0: IRQ12; QSPI0: QIO0; USB_FS0: USB_OVRCURB" - None - - 
-      P503 116 - - - - Disabled - - "ADC1: AN119; AGT2: AGTOB2; GPT_POEG2: GTETRGC; QSPI0: QIO1; USB_FS0: USB_EXICEN" - None - - 
-      P504 117 - - - - Disabled - - "ADC1: AN120; AGT3: AGTOA3; GPT_POEG3: GTETRGD; QSPI0: QIO2; USB_FS0: USB_ID" - None - - 
+      P502 115 GPIO - Low None "Output mode (Initial Low)" CMOS - "ADC1: AN118; AGT2: AGTOA2; GPT_OPS0: GTIW; ICU0: IRQ12; QSPI0: QIO0; USB_FS0: USB_OVRCURB" - IO - - 
+      P503 116 GPIO - Low - "Output mode (Initial Low)" CMOS - "ADC1: AN119; AGT2: AGTOB2; GPT_POEG2: GTETRGC; QSPI0: QIO1; USB_FS0: USB_EXICEN" - IO - - 
+      P504 117 GPIO - Low - "Output mode (Initial Low)" CMOS - "ADC1: AN120; AGT3: AGTOA3; GPT_POEG3: GTETRGD; QSPI0: QIO2; USB_FS0: USB_ID" - IO - - 
       P505 118 ADC1_AN121 GROVE2_AN1 - - "Analog mode" - None "ADC1: AN121; AGT3: AGTOB3; ICU0: IRQ14; QSPI0: QIO3" - IO - - 
       P506 119 ADC1_AN122 GROVE2_AN2 - - "Analog mode" - None "ADC1: AN122; ICU0: IRQ15" - IO - - 
       P507 120 - - - - Disabled - - - - None - - 
@@ -344,9 +344,9 @@ FSP Configuration
       P415 28 - LED1 Low None Disabled CMOS - "AGT4: AGTIO4; CTSU0: TS11; GPT0: GTIOC0A; ICU0: IRQ08; SDHI0: SD0CD; USB_FS0: USB_VBUSEN" - IO - - 
       P500 113 - USB_VBUS_EN Low - Disabled CMOS None "ADC1: AN116; AGT0: AGTOA0; CAC0: CACREF; GPT_OPS0: GTIU; QSPI0: QSPCLK; USB_FS0: USB_VBUSEN" - IO - - 
       P501 114 - USB_VBUS_OC Low None Disabled CMOS None "ADC1: AN117; AGT0: AGTOB0; GPT_OPS0: GTIV; ICU0: IRQ11; QSPI0: QSSL; USB_FS0: USB_OVRCURA" - IO - - 
-      P502 115 - - - - Disabled - - "ADC1: AN118; AGT2: AGTOA2; GPT_OPS0: GTIW; ICU0: IRQ12; QSPI0: QIO0; USB_FS0: USB_OVRCURB" - None - - 
-      P503 116 - - - - Disabled - - "ADC1: AN119; AGT2: AGTOB2; GPT_POEG2: GTETRGC; QSPI0: QIO1; USB_FS0: USB_EXICEN" - None - - 
-      P504 117 - - - - Disabled - - "ADC1: AN120; AGT3: AGTOA3; GPT_POEG3: GTETRGD; QSPI0: QIO2; USB_FS0: USB_ID" - None - - 
+      P502 115 - - Low None Disabled CMOS - "ADC1: AN118; AGT2: AGTOA2; GPT_OPS0: GTIW; ICU0: IRQ12; QSPI0: QIO0; USB_FS0: USB_OVRCURB" - IO - - 
+      P503 116 - - Low - Disabled CMOS - "ADC1: AN119; AGT2: AGTOB2; GPT_POEG2: GTETRGC; QSPI0: QIO1; USB_FS0: USB_EXICEN" - IO - - 
+      P504 117 - - Low - Disabled CMOS - "ADC1: AN120; AGT3: AGTOA3; GPT_POEG3: GTETRGD; QSPI0: QIO2; USB_FS0: USB_ID" - IO - - 
       P505 118 - GROVE2_AN1 - - Disabled - None "ADC1: AN121; AGT3: AGTOB3; ICU0: IRQ14; QSPI0: QIO3" - IO - - 
       P506 119 - GROVE2_AN2 - - Disabled - None "ADC1: AN122; ICU0: IRQ15" - IO - - 
       P507 120 - - - - Disabled - - - - None - - 
@@ -516,6 +516,15 @@ FSP Configuration
   Thread "Blue Thread"
     Symbol: blue_thread0
     Name: Blue Thread
+    Stack size (bytes): 1024
+    Priority: 1
+    Thread Context: NULL
+    Memory Allocation: Static
+    Allocate Secure Context: Enable
+    
+  Thread "RTC Thread"
+    Symbol: RTC_thread
+    Name: RTC Thread
     Stack size (bytes): 1024
     Priority: 1
     Thread Context: NULL
