@@ -517,7 +517,7 @@ FSP Configuration
     Symbol: blue_thread0
     Name: Blue Thread
     Stack size (bytes): 1024
-    Priority: 1
+    Priority: 2
     Thread Context: NULL
     Memory Allocation: Static
     Allocate Secure Context: Enable
@@ -526,7 +526,7 @@ FSP Configuration
     Symbol: RTC_thread
     Name: RTC Thread
     Stack size (bytes): 1024
-    Priority: 1
+    Priority: 3
     Thread Context: NULL
     Memory Allocation: Static
     Allocate Secure Context: Enable
