@@ -23,7 +23,7 @@
 FSP_HEADER
 
 #ifndef configUSE_PREEMPTION
-#define configUSE_PREEMPTION (1)
+#define configUSE_PREEMPTION (0)
 #endif
 #ifndef configUSE_PORT_OPTIMISED_TASK_SELECTION
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION (0)

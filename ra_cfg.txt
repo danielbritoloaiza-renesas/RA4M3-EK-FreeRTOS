@@ -428,7 +428,7 @@ FSP Configuration
   Module "FreeRTOS Port (rm_freertos_port)"
   FreeRTOS
     General: Custom FreeRTOSConfig.h: SystemView_FreeRTOSConfig.h
-    General: Use Preemption: Enabled
+    General: Use Preemption: Disabled
     General: Use Port Optimised Task Selection: Disabled
     General: Use Tickless Idle: Disabled
     Hooks: Use Idle Hook: Enabled
