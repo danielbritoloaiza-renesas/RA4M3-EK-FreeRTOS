@@ -427,7 +427,7 @@ FSP Configuration
     
   Module "FreeRTOS Port (rm_freertos_port)"
   FreeRTOS
-    General: Custom FreeRTOSConfig.h: 
+    General: Custom FreeRTOSConfig.h: SystemView_FreeRTOSConfig.h
     General: Use Preemption: Enabled
     General: Use Port Optimised Task Selection: Disabled
     General: Use Tickless Idle: Disabled
@@ -440,7 +440,7 @@ FSP Configuration
     General: Max Priorities: 5
     General: Minimal Stack Size: 128
     General: Max Task Name Len: 16
-    Stats: Use Trace Facility: Disabled
+    Stats: Use Trace Facility: Enabled
     Stats: Use Stats Formatting Functions: Disabled
     General: Use 16-bit Ticks: Disabled
     General: Idle Should Yield: Enabled

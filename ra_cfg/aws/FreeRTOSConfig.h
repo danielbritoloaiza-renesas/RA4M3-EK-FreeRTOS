@@ -62,7 +62,7 @@ FSP_HEADER
 #define configMAX_TASK_NAME_LEN (16)
 #endif
 #ifndef configUSE_TRACE_FACILITY
-#define configUSE_TRACE_FACILITY (0)
+#define configUSE_TRACE_FACILITY (1)
 #endif
 #ifndef configUSE_STATS_FORMATTING_FUNCTIONS
 #define configUSE_STATS_FORMATTING_FUNCTIONS (0)
