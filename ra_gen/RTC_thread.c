@@ -34,7 +34,7 @@ void RTC_thread_create(void)
                                     RTC_thread_func,
                                     (const char*) "RTC Thread", 1024 / 4, // In words, not bytes
                                     (void*) &RTC_thread_parameters, //pvParameters
-                                    1,
+                                    3,
 #if 1
                                     (StackType_t*) &RTC_thread_stack,
                                     (StaticTask_t*) &RTC_thread_memory

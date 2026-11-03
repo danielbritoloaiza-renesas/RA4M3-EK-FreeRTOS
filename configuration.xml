@@ -243,7 +243,7 @@
       <property id="_symbol" value="blue_thread0"/>
       <property id="rtos.awsfreertos.thread.name" value="Blue Thread"/>
       <property id="rtos.awsfreertos.thread.stack" value="1024"/>
-      <property id="rtos.awsfreertos.thread.priority" value="1"/>
+      <property id="rtos.awsfreertos.thread.priority" value="2"/>
       <property id="rtos.awsfreertos.thread.context" value="NULL"/>
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
@@ -252,7 +252,7 @@
       <property id="_symbol" value="RTC_thread"/>
       <property id="rtos.awsfreertos.thread.name" value="RTC Thread"/>
       <property id="rtos.awsfreertos.thread.stack" value="1024"/>
-      <property id="rtos.awsfreertos.thread.priority" value="1"/>
+      <property id="rtos.awsfreertos.thread.priority" value="3"/>
       <property id="rtos.awsfreertos.thread.context" value="NULL"/>
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
@@ -262,7 +262,8 @@
       <property id="config.driver.ioport.ccd_support_enable" value="config.driver.ioport.ccd_support_enable.disabled"/>
     </config>
     <config id="config.awsfreertos.thread">
-      <property id="config.awsfreertos.custom_freertosconfig" value=""/>
+      <property id="config.awsfreertos.custom_freertosconfig" value="SystemView_FreeRTOSConfig.h"/>
+      <property id="config.awsfreertos.thread.configuse_trace_facility" value="config.awsfreertos.thread.configuse_trace_facility.enabled"/>
       <property id="config.awsfreertos.thread.configuse_preemption" value="config.awsfreertos.thread.configuse_preemption.enabled"/>
       <property id="config.awsfreertos.thread.configuse_port_optimised_task_selection" value="config.awsfreertos.thread.configuse_port_optimised_task_selection.disabled"/>
       <property id="config.awsfreertos.thread.configuse_tickless_idle" value="config.awsfreertos.thread.configuse_tickless_idle.disabled"/>

@@ -5,6 +5,7 @@
 */
 
 #include "hal_data.h"
+#include "segger_systemview/systemview_startup.h"
 
 FSP_CPP_HEADER
 void R_BSP_WarmStart(bsp_warm_start_event_t event);
@@ -51,5 +52,7 @@ void R_BSP_WarmStart (bsp_warm_start_event_t event)
         /* Setup SDRAM and initialize it. Must configure pins first. */
         R_BSP_SdramInit(true);
 #endif
+
+        systemview_startup();
     }
 }

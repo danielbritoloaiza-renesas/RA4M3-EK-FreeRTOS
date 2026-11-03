@@ -34,7 +34,7 @@ void blue_thread0_create(void)
                                       blue_thread0_func,
                                       (const char*) "Blue Thread", 1024 / 4, // In words, not bytes
                                       (void*) &blue_thread0_parameters, //pvParameters
-                                      1,
+                                      2,
 #if 1
                                       (StackType_t*) &blue_thread0_stack,
                                       (StaticTask_t*) &blue_thread0_memory

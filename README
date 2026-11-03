@@ -34,6 +34,31 @@ Each major concept is developed in a separate Git branch.
 12. Debugging and performance
 13. Embedded connectivity
 
+## SEGGER SystemView
+
+SystemView is integrated through J-Link RTT; no UART or SWO pin is required.
+The SEGGER SystemView and RTT target sources are in `src/segger_systemview`
+with their upstream license notices. They were imported from:
+
+- SystemView: `SEGGERMicro/SystemView` commit
+  `92ca7a810c5765ba64911919acd511c61b6b083f`
+- RTT: `SEGGERMicro/RTT` commit
+  `4d8feab3150f86f37a9d323ddc88d6cdf5673072`
+
+The FreeRTOS V11 adapter and trace-facility setting are enabled through the
+custom configuration header `src/SystemView_FreeRTOSConfig.h`, selected in
+`configuration.xml`. SystemView starts in the BSP post-C warm-start callback,
+after the clock is configured and before FreeRTOS creates its tasks. Its
+timestamp uses the Cortex-M DWT cycle counter at `configCPU_CLOCK_HZ`.
+
+To view a trace, connect the EK-RA4M3 with a J-Link, open SEGGER SystemView,
+select J-Link RTT as the target interface, then reset/run the target while
+SystemView is connected. Recording starts at startup and the target uses RTT's
+automatically selected SystemView up-channel.
+
+If FSP regenerates `ra_cfg/aws/FreeRTOSConfig.h`, the custom SystemView header
+is selected by the saved FSP configuration and should be included automatically.
+
 ## Reference Project
 
 The master branch contains the original working FSP FreeRTOS Blinky
