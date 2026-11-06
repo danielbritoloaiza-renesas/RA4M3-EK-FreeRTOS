@@ -2,67 +2,72 @@
 #include "blue_thread0.h"
 
 #if 1
-static StaticTask_t blue_thread0_memory;
-#if defined(__ARMCC_VERSION)           /* AC6 compiler */
+                static StaticTask_t blue_thread0_memory;
+                #if defined(__ARMCC_VERSION)           /* AC6 compiler */
                 static uint8_t blue_thread0_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.thread") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
                 #else
-static uint8_t blue_thread0_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.blue_thread0") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
-#endif
-#endif
-TaskHandle_t blue_thread0;
-void blue_thread0_create(void);
-static void blue_thread0_func(void *pvParameters);
-void rtos_startup_err_callback(void *p_instance, void *p_data);
-void rtos_startup_common_init(void);
+                static uint8_t blue_thread0_stack[1024] BSP_PLACE_IN_SECTION(BSP_UNINIT_SECTION_PREFIX ".stack.blue_thread0") BSP_ALIGN_VARIABLE(BSP_STACK_ALIGNMENT);
+                #endif
+                #endif
+                TaskHandle_t blue_thread0;
+                void blue_thread0_create(void);
+                static void blue_thread0_func(void * pvParameters);
+                void rtos_startup_err_callback(void * p_instance, void * p_data);
+                void rtos_startup_common_init(void);
 extern uint32_t g_fsp_common_thread_count;
 
-const rm_freertos_port_parameters_t blue_thread0_parameters =
-{ .p_context = (void*) NULL, };
+                const rm_freertos_port_parameters_t blue_thread0_parameters =
+                {
+                    .p_context = (void *) NULL,
+                };
 
-void blue_thread0_create(void)
-{
-    /* Increment count so we will know the number of threads created in the RA Configuration editor. */
-    g_fsp_common_thread_count++;
+                void blue_thread0_create (void)
+                {
+                    /* Increment count so we will know the number of threads created in the RA Configuration editor. */
+                    g_fsp_common_thread_count++;
 
-    /* Initialize each kernel object. */
+                    /* Initialize each kernel object. */
+                    
 
-#if 1
-    blue_thread0 = xTaskCreateStatic (
-#else
+                    #if 1
+                    blue_thread0 = xTaskCreateStatic(
+                    #else
                     BaseType_t blue_thread0_create_err = xTaskCreate(
                     #endif
-                                      blue_thread0_func,
-                                      (const char*) "Blue Thread", 1024 / 4, // In words, not bytes
-                                      (void*) &blue_thread0_parameters, //pvParameters
-                                      2,
-#if 1
-                                      (StackType_t*) &blue_thread0_stack,
-                                      (StaticTask_t*) &blue_thread0_memory
-#else
+                        blue_thread0_func,
+                        (const char *)"Blue Thread",
+                        1024/4, // In words, not bytes
+                        (void *) &blue_thread0_parameters, //pvParameters
+                        2,
+                        #if 1
+                        (StackType_t *)&blue_thread0_stack,
+                        (StaticTask_t *)&blue_thread0_memory
+                        #else
                         & blue_thread0
                         #endif
-                                      );
+                    );
 
-#if 1
-    if (NULL == blue_thread0)
-    {
-        rtos_startup_err_callback (blue_thread0, 0);
-    }
-#else
+                    #if 1
+                    if (NULL == blue_thread0)
+                    {
+                        rtos_startup_err_callback(blue_thread0, 0);
+                    }
+                    #else
                     if (pdPASS != blue_thread0_create_err)
                     {
                         rtos_startup_err_callback(blue_thread0, 0);
                     }
                     #endif
-}
-static void blue_thread0_func(void *pvParameters)
-{
-    /* Initialize common components */
-    rtos_startup_common_init ();
+                }
+                static void blue_thread0_func (void * pvParameters)
+                {
+                    /* Initialize common components */
+                    rtos_startup_common_init();
 
-    /* Initialize each module instance. */
+                    /* Initialize each module instance. */
+                    
 
-#if (1 == BSP_TZ_NONSECURE_BUILD) && (1 == 1)
+                    #if (1 == BSP_TZ_NONSECURE_BUILD) && (1 == 1)
                     /* When FreeRTOS is used in a non-secure TrustZone application, portALLOCATE_SECURE_CONTEXT must be called prior
                      * to calling any non-secure callable function in a thread. The parameter is unused in the FSP implementation.
                      * If no slots are available then configASSERT() will be called from vPortSVCHandler_C(). If this occurs, the
@@ -74,6 +79,6 @@ static void blue_thread0_func(void *pvParameters)
                      portALLOCATE_SECURE_CONTEXT(0);
                     #endif
 
-    /* Enter user code for this thread. Pass task handle. */
-    blue_thread0_entry (pvParameters);
-}
+                    /* Enter user code for this thread. Pass task handle. */
+                    blue_thread0_entry(pvParameters);
+                }

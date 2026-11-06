@@ -105,6 +105,7 @@ Additional information:
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <math.h>
 #include "SEGGER_SYSVIEW_Int.h"
 #include "SEGGER_RTT.h"
 
@@ -474,7 +475,7 @@ static U8 *_EncodeStr(U8 *pPayload, const char *pText, unsigned int Limit) {
       Limit = SEGGER_SYSVIEW_MAX_STRING_LEN;
     }
     while ((Limit-- > 0) && (*pText != '\0')) {
-      *pPayload++ = *pText++;
+      *pPayload++ = (U8)*pText++;
     }
     //
     // Save string length to buffer.
@@ -2777,7 +2778,7 @@ void SEGGER_SYSVIEW_RegisterData(SEGGER_SYSVIEW_DATA_REGISTER* pInfo) {
     ENCODE_U32(pPayload, pInfo->RangeMax);
     pPayload = _EncodeFloat(pPayload, pInfo->ScalingFactor);
     pPayload = _EncodeStr(pPayload, pInfo->sUnit, SEGGER_SYSVIEW_MAX_STRING_LEN);
-  } else if (pInfo->ScalingFactor != 0) {
+  } else if (fpclassify(pInfo->ScalingFactor) != FP_ZERO) {
     ENCODE_U32(pPayload, pInfo->DataType);
     ENCODE_U32(pPayload, pInfo->Offset);
     ENCODE_U32(pPayload, pInfo->RangeMin);
