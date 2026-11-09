@@ -1,0 +1,5 @@
+C:/Users/a5166677/OneDrive - Renesas Electronics Corporation/Documents/workspace_vs/FreeRTOS_EKRA4M3/build/Debug/CMakeFiles/open_rasc_FreeRTOS_EKRA4M3.dir
+C:/Users/a5166677/OneDrive - Renesas Electronics Corporation/Documents/workspace_vs/FreeRTOS_EKRA4M3/build/Debug/CMakeFiles/FreeRTOS_EKRA4M3.elf.dir
+C:/Users/a5166677/OneDrive - Renesas Electronics Corporation/Documents/workspace_vs/FreeRTOS_EKRA4M3/build/Debug/CMakeFiles/generate_sbd_FreeRTOS_EKRA4M3.dir
+C:/Users/a5166677/OneDrive - Renesas Electronics Corporation/Documents/workspace_vs/FreeRTOS_EKRA4M3/build/Debug/CMakeFiles/edit_cache.dir
+C:/Users/a5166677/OneDrive - Renesas Electronics Corporation/Documents/workspace_vs/FreeRTOS_EKRA4M3/build/Debug/CMakeFiles/rebuild_cache.dir
