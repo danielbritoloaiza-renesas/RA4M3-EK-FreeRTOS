@@ -9,6 +9,8 @@ extern void blue_thread0_create(void);
                 extern TaskHandle_t blue_thread0;
 extern void RTC_thread_create(void);
                 extern TaskHandle_t RTC_thread;
+extern void button1_thread0_create(void);
+                extern TaskHandle_t button1_thread0;
                 uint32_t g_fsp_common_thread_count;
                 bool g_fsp_common_initialized;
                 SemaphoreHandle_t g_fsp_common_initialized_semaphore;
@@ -107,6 +109,7 @@ extern void RTC_thread_create(void);
                     red_thread_create();
 blue_thread0_create();
 RTC_thread_create();
+button1_thread0_create();
 
                     /* Start the scheduler. */
                     vTaskStartScheduler();

@@ -12,7 +12,7 @@
     <option key="#FSPVersion#" value="6.6.0"/>
     <option key="#ConfigurationFragments#" value="Renesas##BSP##Board##ra4m3_ek##"/>
     <option key="#SELECTED_TOOLCHAIN#" value="clang_arm"/>
-    <option key="#ToolchainVersion#" value="22.1.0"/>
+    <option key="#ToolchainVersion#" value=""/>
   </generalSettings>
   <raBspConfiguration>
     <config id="config.bsp.ra4m3.R7FA4M3AF3CFB">
@@ -253,6 +253,15 @@
       <property id="rtos.awsfreertos.thread.name" value="RTC Thread"/>
       <property id="rtos.awsfreertos.thread.stack" value="1024"/>
       <property id="rtos.awsfreertos.thread.priority" value="3"/>
+      <property id="rtos.awsfreertos.thread.context" value="NULL"/>
+      <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
+      <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>
+    </context>
+    <context id="rtos.awsfreertos.thread.2025207525">
+      <property id="_symbol" value="button1_thread0"/>
+      <property id="rtos.awsfreertos.thread.name" value="Button Thread"/>
+      <property id="rtos.awsfreertos.thread.stack" value="1024"/>
+      <property id="rtos.awsfreertos.thread.priority" value="1"/>
       <property id="rtos.awsfreertos.thread.context" value="NULL"/>
       <property id="rtos.awsfreertos.thread.allocation" value="rtos.awsfreertos.thread.allocation.static"/>
       <property id="rtos.awsfreertos.thread.secure_context" value="rtos.awsfreertos.thread.secure_context.enable"/>

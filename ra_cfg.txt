@@ -531,3 +531,12 @@ FSP Configuration
     Memory Allocation: Static
     Allocate Secure Context: Enable
     
+  Thread "Button Thread"
+    Symbol: button1_thread0
+    Name: Button Thread
+    Stack size (bytes): 1024
+    Priority: 1
+    Thread Context: NULL
+    Memory Allocation: Static
+    Allocate Secure Context: Enable
+    
