@@ -5,15 +5,14 @@
 */
 
 #include <red_thread.h>
+#include "button_event_queue.h"
 
 extern bsp_leds_t g_bsp_leds;
-volatile bool g_red_led_on = false;
 
 /* Red Thread entry function */
 void red_thread_entry (void * pvParameters)
 {
     FSP_PARAMETER_NOT_USED(pvParameters);
-    TickType_t xLastWakeTime = xTaskGetTickCount();
 
     /* LED type structure */
     bsp_leds_t leds = g_bsp_leds;
@@ -32,29 +31,38 @@ void red_thread_entry (void * pvParameters)
         }
     }
 
+    QueueHandle_t event_queue = button_event_queue_get();
+    if (NULL == event_queue)
+    {
+        BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
+    }
+
+    bool led_on = false;
+    button_event_t event;
+
+    R_BSP_PinAccessEnable();
+    R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2], BSP_IO_LEVEL_HIGH);
+    R_BSP_PinAccessDisable();
+
     while (1)
     {
-        /* Enable access to the PFS registers. If using r_ioport module then register protection is automatically
-         * handled. This code uses BSP IO functions to show how it is used.
-         */
-        R_BSP_PinAccessEnable();
+        if (pdPASS != xQueueReceive(event_queue, &event, portMAX_DELAY))
+        {
+            BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
+        }
 
-#if BSP_NUMBER_OF_CORES == 1
+        if (BUTTON_EVENT_TOGGLE_RED_LED == event)
+        {
+            led_on = !led_on;
 
-        /* Update all board LEDs */
-
-        /* Write to this pin */
-        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2],
-                       g_red_led_on ? BSP_IO_LEVEL_LOW : BSP_IO_LEVEL_HIGH);
-#else
-
-        /* Update LED that is at the index of this core. */
-        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[_RA_CORE], pin_level);
-#endif
-
-        /* Protect PFS registers */
-        R_BSP_PinAccessDisable();
-
-        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10));
+            R_BSP_PinAccessEnable();
+            R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2],
+                           led_on ? BSP_IO_LEVEL_LOW : BSP_IO_LEVEL_HIGH);
+            R_BSP_PinAccessDisable();
+        }
+        else
+        {
+            BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
+        }
     }
 }
