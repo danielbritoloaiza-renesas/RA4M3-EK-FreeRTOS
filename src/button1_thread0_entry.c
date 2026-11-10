@@ -1,4 +1,7 @@
 #include "button1_thread0.h"
+
+extern volatile bool g_red_led_on;
+
                 /* Button Thread entry function */
                 /* pvParameters contains TaskHandle_t */
                 void button1_thread0_entry(void * pvParameters)
@@ -36,7 +39,7 @@
 
                                 if (pdTRUE == is_pressed)
                                 {
-                                    /* Add the action to execute when SW1 is pressed. */
+                                    g_red_led_on = !g_red_led_on;
                                 }
                             }
                         }

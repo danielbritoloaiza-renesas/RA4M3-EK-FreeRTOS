@@ -7,6 +7,7 @@
 #include <red_thread.h>
 
 extern bsp_leds_t g_bsp_leds;
+volatile bool g_red_led_on = false;
 
 /* Red Thread entry function */
 void red_thread_entry (void * pvParameters)
@@ -31,9 +32,6 @@ void red_thread_entry (void * pvParameters)
         }
     }
 
-    /* Holds level to set for pins */
-    bsp_io_level_t pin_level = BSP_IO_LEVEL_LOW;
-
     while (1)
     {
         /* Enable access to the PFS registers. If using r_ioport module then register protection is automatically
@@ -46,7 +44,8 @@ void red_thread_entry (void * pvParameters)
         /* Update all board LEDs */
 
         /* Write to this pin */
-        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2], pin_level);
+        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2],
+                       g_red_led_on ? BSP_IO_LEVEL_LOW : BSP_IO_LEVEL_HIGH);
 #else
 
         /* Update LED that is at the index of this core. */
@@ -56,16 +55,6 @@ void red_thread_entry (void * pvParameters)
         /* Protect PFS registers */
         R_BSP_PinAccessDisable();
 
-        /* Toggle level for next write */
-        if (BSP_IO_LEVEL_LOW == pin_level)
-        {
-            pin_level = BSP_IO_LEVEL_HIGH;
-        }
-        else
-        {
-            pin_level = BSP_IO_LEVEL_LOW;
-        }
-
-        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(400));
+        xTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(10));
     }
 }
