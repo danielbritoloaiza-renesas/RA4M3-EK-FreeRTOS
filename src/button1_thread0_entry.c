@@ -1,5 +1,5 @@
 #include "button1_thread0.h"
-#include "button_event_queue.h"
+#include "button_event_semaphore.h"
 
                 /* Button Thread entry function */
                 /* pvParameters contains TaskHandle_t */
@@ -7,8 +7,8 @@
                 {
                     FSP_PARAMETER_NOT_USED(pvParameters);
 
-                    QueueHandle_t event_queue = button_event_queue_get();
-                    if (NULL == event_queue)
+                    SemaphoreHandle_t event_semaphore = button_event_semaphore_get();
+                    if (NULL == event_semaphore)
                     {
                         BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
                     }
@@ -44,10 +44,9 @@
 
                                 if (pdTRUE == is_pressed)
                                 {
-                                    button_event_t event = BUTTON_EVENT_TOGGLE_RED_LED;
-                                    if (pdPASS != xQueueSend(event_queue, &event, 0))
+                                    if (pdFALSE == xSemaphoreGive(event_semaphore))
                                     {
-                                        g_button_event_overflow_count++;
+                                        g_button_semaphore_give_fail_count++;
                                     }
                                 }
                             }

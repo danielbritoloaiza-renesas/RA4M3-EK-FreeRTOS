@@ -5,7 +5,7 @@
 */
 
 #include <red_thread.h>
-#include "button_event_queue.h"
+#include "button_event_semaphore.h"
 
 extern bsp_leds_t g_bsp_leds;
 
@@ -31,14 +31,13 @@ void red_thread_entry (void * pvParameters)
         }
     }
 
-    QueueHandle_t event_queue = button_event_queue_get();
-    if (NULL == event_queue)
+    SemaphoreHandle_t event_semaphore = button_event_semaphore_get();
+    if (NULL == event_semaphore)
     {
         BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
     }
 
     bool led_on = false;
-    button_event_t event;
 
     R_BSP_PinAccessEnable();
     R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2], BSP_IO_LEVEL_HIGH);
@@ -46,23 +45,18 @@ void red_thread_entry (void * pvParameters)
 
     while (1)
     {
-        if (pdPASS != xQueueReceive(event_queue, &event, portMAX_DELAY))
+        if (pdFALSE == xSemaphoreTake(event_semaphore, portMAX_DELAY))
         {
             BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
         }
 
-        if (BUTTON_EVENT_TOGGLE_RED_LED == event)
-        {
-            led_on = !led_on;
+        led_on = !led_on;
 
-            R_BSP_PinAccessEnable();
-            R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2],
-                           led_on ? BSP_IO_LEVEL_LOW : BSP_IO_LEVEL_HIGH);
-            R_BSP_PinAccessDisable();
-        }
-        else
-        {
-            BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
-        }
+        R_BSP_PinAccessEnable();
+        R_BSP_PinWrite((bsp_io_port_pin_t) leds.p_leds[2],
+                       led_on ? BSP_IO_LEVEL_LOW : BSP_IO_LEVEL_HIGH);
+        R_BSP_PinAccessDisable();
+
+        vTaskDelay(pdMS_TO_TICKS(2000));
     }
 }
