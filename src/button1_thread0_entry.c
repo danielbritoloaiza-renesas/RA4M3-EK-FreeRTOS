@@ -45,7 +45,7 @@
                                 if (pdTRUE == is_pressed)
                                 {
                                     button_event_t event = BUTTON_EVENT_TOGGLE_RED_LED;
-                                    if (pdPASS != xQueueSend(event_queue, &event, 0))
+                                    if (pdPASS != xQueueSend(event_queue, &event, pdMS_TO_TICKS(10000)))
                                     {
                                         g_button_event_overflow_count++;
                                     }
