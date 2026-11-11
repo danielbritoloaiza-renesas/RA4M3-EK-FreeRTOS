@@ -22,6 +22,4 @@ Renesas\#\#Middleware\#\#all\#\#rm_freertos_port\#\#\#\#6.6.0/all=1041992296,ra/
 Renesas\#\#Middleware\#\#all\#\#rm_freertos_port\#\#\#\#6.6.0/libraries=
 Renesas\#\#Projects\#\#all\#\#common\#\#\#\#6.6.0/all=
 Renesas\#\#Projects\#\#all\#\#common\#\#\#\#6.6.0/libraries=
-Renesas\#\#Projects\#\#all\#\#freertos_blinky\#\#\#\#6.6.0/all=
-Renesas\#\#Projects\#\#all\#\#freertos_blinky\#\#\#\#6.6.0/libraries=
 eclipse.preferences.version=1
