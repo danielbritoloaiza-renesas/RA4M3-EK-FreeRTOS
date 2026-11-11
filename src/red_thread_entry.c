@@ -64,5 +64,7 @@ void red_thread_entry (void * pvParameters)
         {
             BSP_CFG_HANDLE_UNRECOVERABLE_ERROR(0);
         }
+
+        vTaskDelay(pdMS_TO_TICKS(2000));
     }
 }
