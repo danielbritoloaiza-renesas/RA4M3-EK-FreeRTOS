@@ -14,7 +14,9 @@ SemaphoreHandle_t button_event_semaphore_get(void)
     taskENTER_CRITICAL();
     if (NULL == g_button_event_semaphore)
     {
-        g_button_event_semaphore = xSemaphoreCreateBinaryStatic(&g_button_event_semaphore_control);
+        g_button_event_semaphore = xSemaphoreCreateCountingStatic(BUTTON_EVENT_SEMAPHORE_MAX_COUNT,
+                                                                  0U,
+                                                                  &g_button_event_semaphore_control);
     }
 
     semaphore = g_button_event_semaphore;
